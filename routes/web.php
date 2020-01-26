@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('sendmsg/mqtt/{topic}/{msg}', 'MqttController@SendMsgViaMqtt')->name('sendmsg.mqtt');
+Route::get('subcribe/mqtt/{topic}', 'MqttController@SubscribetoTopic')->name('subscribe.mqtt');
