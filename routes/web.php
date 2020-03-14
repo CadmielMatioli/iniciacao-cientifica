@@ -18,5 +18,5 @@ Route::get('/', function () {
 Route::post('sendmsg/mqtt/', 'MqttController@SendMsgViaMqtt')->name('sendmsg.mqtt');
 Route::get('subcribe/mqtt/{topic}', 'MqttController@SubscribetoTopic')->name('subscribe.mqtt');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/subscribe', 'HomeController@topicSubscribeView')->name('subscribe.view');
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('subscribe', 'HomeController@topicSubscribeView')->name('subscribe.view');
