@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('sendmsg/mqtt/{topic}/{msg}', 'MqttController@SendMsgViaMqtt')->name('sendmsg.mqtt');
+Route::post('sendmsg/mqtt/', 'MqttController@SendMsgViaMqtt')->name('sendmsg.mqtt');
 Route::get('subcribe/mqtt/{topic}', 'MqttController@SubscribetoTopic')->name('subscribe.mqtt');
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/subscribe', 'HomeController@topicSubscribeView')->name('subscribe.view');
