@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
+
     Route::post('sendmsg/mqtt/', 'MqttController@sendMsgViaMqtt')->name('sendmsg.mqtt');
     Route::post('subcribe/mqtt/', 'MqttController@subscribetoTopic')->name('subscribe.mqtt');
 
