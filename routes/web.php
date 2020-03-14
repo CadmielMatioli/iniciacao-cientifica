@@ -18,10 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::post('sendmsg/mqtt/', 'MqttController@SendMsgViaMqtt')->name('sendmsg.mqtt');
-    Route::get('subcribe/mqtt/{topic}', 'MqttController@SubscribetoTopic')->name('subscribe.mqtt');
+    Route::post('sendmsg/mqtt/', 'MqttController@sendMsgViaMqtt')->name('sendmsg.mqtt');
+    Route::post('subcribe/mqtt/', 'MqttController@subscribetoTopic')->name('subscribe.mqtt');
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('subscribe', 'HomeController@topicSubscribeView')->name('subscribe.view');
+    Route::get('topics', 'HomeController@topicsView')->name('topics.view');
 
 });

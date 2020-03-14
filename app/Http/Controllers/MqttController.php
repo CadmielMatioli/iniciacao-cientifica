@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Salman\Mqtt\MqttClass\Mqtt;
 use App\Http\Requests\MqttSubscribeRequest;
+use Mqtt;
 
 class MqttController extends Controller
 {
-    public function SendMsgViaMqtt(MqttSubscribeRequest $request)
+    public function sendMsgViaMqtt(MqttSubscribeRequest $request)
     {
         $topic =  $request->topic; 
         $message =  $request->message;
-        $mqtt = new Mqtt();
-        $client_id = auth()->user()->id;
-        $output = $mqtt->ConnectAndPublish($topic, $message, $client_id);
+        $client_id = 'clientId-Wf64dDH74y';
+        $output = Mqtt::ConnectAndPublish($topic, $message, $client_id);
 
         if ($output === true)
         {
@@ -26,16 +25,14 @@ class MqttController extends Controller
         
     }
 
-    public function SubscribetoTopic($topic)
+    public function subscribetoTopic()
     {
-        $mqtt = new Mqtt();
-        $client_id = auth()->user()->id;
-        $mqtt->ConnectAndSubscribe($topic, function($topic, $msg){
+        $topic = request()->topic;
+        $client_id = 'clientId-Wf64dDH74y';
+        Mqtt::ConnectAndSubscribe($topic, function($topic, $msg){
             echo "Msg Received: \n";
             echo "Topic: {$topic}\n\n";
             echo "\t$msg\n\n";
         }, $client_id);
-
-        return response()->json($mqtt);
     }
 }

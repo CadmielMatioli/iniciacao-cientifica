@@ -30,4 +30,8 @@ class HomeController extends Controller
     {
         return view('mqtt.subscribe');
     }
+    public function topicsView()
+    {
+        return view('mqtt.result');
+    }
 }
