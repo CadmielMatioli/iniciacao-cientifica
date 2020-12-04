@@ -1,7 +1,7 @@
 var connected_flag=0
 var mqtt;
 var reconnectTimeout = 2000;
-var host="201.21.138.99";
+var host="mqtt.ddnsking.com";
 var port=1886;
 var labelsChart = [];
 var datasetsChart = [];
