@@ -63,6 +63,8 @@ function MQTTconnect(){
         timeout: 3,
         onSuccess: onConnect,
         onFailure: onFailure,
+        useSSL: true,
+        cleanSession : false
     };
 
     mqtt.onConnectionLost = onConnectionLost;
